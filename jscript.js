@@ -33,7 +33,6 @@ $(document).ready(function() {
  function startQuiz(num,questionList){
    if(!questionList){
      questionList = prepData(num);
-     startQuiz(num,questionList);
    }
       if(questionIndex < questionList.length){
         document.getElementById("questionText").innerHTML = questionList[questionIndex];
