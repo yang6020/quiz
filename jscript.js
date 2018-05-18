@@ -11,164 +11,79 @@ $(document).ready(function() {
      $("#firstQuiz").on("click",function(){
       $(".start-screen").css("display","none");
       $(".quiz-screen").css("display","block");
-      startQuizOne();
+      startQuiz(0,false);
      })
 
      $("#secondQuiz").on("click",function(){
        $(".start-screen").css("display","none");
        $(".quiz-screen").css("display","block");
-       startQuizTwo();
-       })
-
+       startQuiz(1,false);
+     })
 
   var questionIndex = 0;
 
+  function prepData(num){
+  var questionList = [];
+  for(i = 0; i < data.quizzes[num].questions.length; i++) {
+   questionList.push(data.quizzes[num].questions[i].question)
+  }
+  return questionList;
+  }
 
-
-
-     function startQuizOne(){
-       var questionList = [];
-       for(i = 0; i < data.quizzes[0].questions.length; i++) {
-        questionList.push(data.quizzes[0].questions[i].question)
-       }
-
-
-
-       if(questionIndex < questionList.length )
-       {
-       document.getElementById("questionText").innerHTML = questionList[questionIndex];
-       let answerObjectList =[];
-       for(j = 0; j < data.quizzes[0].questions[questionIndex].answers.length; j++){
-         answerObjectList.push(data.quizzes[0].questions[questionIndex].answers[j]);
-       }
-
-       let answerList =[];
-       for(k = 0; k < answerObjectList.length; k++){
-         answerList.push(answerObjectList[k].content)
-       }
-       document.getElementById("answerOne").innerHTML = answerList[0];
-       document.getElementById("answerTwo").innerHTML = answerList[1];
-       document.getElementById("answerThree").innerHTML =answerList[2];
-       document.getElementById("answerFour").innerHTML = answerList[3];
-
-       $("#answerOne").off().on("click",function(){
-         if(answerObjectList[0].value){
-           score++;
-           document.getElementById("score").innerHTML = score;
-                  console.log(questionIndex);
-           questionIndex++;
-                  console.log(questionIndex);
-           startQuizOne();
-         }
-       else if(!answerObjectList[0].value){
-                console.log(questionIndex);
-         questionIndex++;
-                console.log(questionIndex);
-         startQuizOne();
-       }})
-
-       $("#answerTwo").off().on("click",function(){
-         if(answerObjectList[1].value){
-           score++;
-           document.getElementById("score").innerHTML = score;
-           questionIndex++;
-           startQuizOne();
-         }
-       else{
-         questionIndex++;
-         startQuizOne();
-       }})
-
-       $("#answerThree").off().on("click",function(){
-         if(answerObjectList[2].value){
-           score++;
-           document.getElementById("score").innerHTML = score;
-           questionIndex++;
-           startQuizOne();
-         }
-       else{
-         questionIndex++;
-         startQuizOne();
-       }})
-
-       $("#answerFour").off().on("click",function(){
-         if(answerObjectList[3].value){
-           score++;
-           document.getElementById("score").innerHTML = score;
-           questionIndex++;
-           startQuizOne();
-         }
-       else{
-         questionIndex++;
-         startQuizOne();
-       }})
-      }
-     else {
-         document.getElementById("score2").innerHTML = score;
-         resultText();
-         endGame();
-       }
+ function startQuiz(num,questionList){
+   if(!questionList){
+     questionList = prepData(num);
+     startQuiz(num,questionList);
    }
+      if(questionIndex < questionList.length){
+        document.getElementById("questionText").innerHTML = questionList[questionIndex];
+        let answerObjectList =[];
+        for(j = 0; j < data.quizzes[num].questions[questionIndex].answers.length; j++){
+          answerObjectList.push(data.quizzes[num].questions[questionIndex].answers[j])
+        }
+        let answerList =[];
+        for(k = 0; k < answerObjectList.length; k++){
+          answerList.push(answerObjectList[k].content)
+        }
+        document.getElementById("answerOne").innerHTML = answerList[0];
+        document.getElementById("answerTwo").innerHTML = answerList[1];
+        document.getElementById("answerThree").innerHTML =answerList[2];
+        document.getElementById("answerFour").innerHTML = answerList[3];
 
-
-
-        function startQuizTwo(){
-          var questionList = [];
-          for(i = 0; i < data.quizzes[1].questions.length; i++) {
-           questionList.push(data.quizzes[1].questions[i].question)
-         }
-
-          if(questionIndex < questionList.length)
-          {
-          document.getElementById("questionText").innerHTML = questionList[questionIndex];
-          let answerObjectList =[];
-          for(j = 0; j < data.quizzes[1].questions[questionIndex].answers.length; j++){
-            answerObjectList.push(data.quizzes[1].questions[questionIndex].answers[j])
-          }
-
-          let answerList =[];
-          for(k = 0; k < answerObjectList.length; k++){
-            answerList.push(answerObjectList[k].content)
-          }
-          document.getElementById("answerOne").innerHTML = answerList[0];
-          document.getElementById("answerTwo").innerHTML = answerList[1];
-          document.getElementById("answerThree").innerHTML =answerList[2];
-          document.getElementById("answerFour").innerHTML = answerList[3];
-
-          $("#answerOne").off().on("click",function(){
+        $("#answerOne").off().on("click",function(){
             if(answerObjectList[0].value){
               score++;
               document.getElementById("score").innerHTML = score;
               questionIndex++;
-              startQuizTwo();
+              startQuiz(num);
             }
           else{
             questionIndex++;
-          startQuizTwo();
-          }})
+          startQuiz(num);
+        }})
 
-          $("#answerTwo").off().on("click",function(){
+        $("#answerTwo").off().on("click",function(){
             if(answerObjectList[1].value){
               score++;
               document.getElementById("score").innerHTML = score;
               questionIndex++;
-              startQuizTwo();
+              startQuiz(num);
             }
           else{
             questionIndex++;
-          startQuizTwo();
-          }})
+        startQuiz(num);
+        }})
 
           $("#answerThree").off().on("click",function(){
             if(answerObjectList[2].value){
               score++;
               document.getElementById("score").innerHTML = score;
               questionIndex++;
-              startQuizTwo();
+              startQuiz(num);
             }
           else{
             questionIndex++;
-          startQuizTwo();
+          startQuiz(num);
           }})
 
 
@@ -177,11 +92,11 @@ $(document).ready(function() {
               score++;
               document.getElementById("score").innerHTML = score;
               questionIndex++;
-              startQuizTwo();
+              startQuiz(num);
             }
           else{
             questionIndex++;
-          startQuizTwo();
+          startQuiz(num);
           }})
 
          }
@@ -190,20 +105,18 @@ $(document).ready(function() {
             resultText();
             endGame();
           }
-      }
+
 
     $("#restartButton").on("click",function(){
       window.location.reload();
     })
-
-
 
   function endGame(){
       $(".quiz-screen").css("display","none");
       $(".end-screen").css("display","block");
   }
 
-function resultText(){
+  function resultText(){
   var result = "";
   if (score >= 0.5 * data.quizzes[0].questions.length  ){
      result = "CONGRATULATIONS!"}
@@ -211,6 +124,7 @@ function resultText(){
      result = "GAME OVER"
     }
   document.getElementById("result").innerHTML = result;
+  }
 }
 }
 );
