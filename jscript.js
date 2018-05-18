@@ -32,12 +32,14 @@ $(document).ready(function() {
         questionList.push(data.quizzes[0].questions[i].question)
        }
 
-       if(questionIndex < data.quizzes[0].questions.length +1 )
+
+
+       if(questionIndex < questionList.length )
        {
        document.getElementById("questionText").innerHTML = questionList[questionIndex];
        let answerObjectList =[];
        for(j = 0; j < data.quizzes[0].questions[questionIndex].answers.length; j++){
-         answerObjectList.push(data.quizzes[0].questions[questionIndex].answers[j])
+         answerObjectList.push(data.quizzes[0].questions[questionIndex].answers[j]);
        }
 
        let answerList =[];
@@ -49,25 +51,23 @@ $(document).ready(function() {
        document.getElementById("answerThree").innerHTML =answerList[2];
        document.getElementById("answerFour").innerHTML = answerList[3];
 
-       $("#answerOne").on("click",function(){
+       $("#answerOne").off().on("click",function(){
          if(answerObjectList[0].value){
            score++;
            document.getElementById("score").innerHTML = score;
-           console.log(questionIndex);
+                  console.log(questionIndex);
            questionIndex++;
-           console.log(questionIndex);
-           console.log(answerObjectList[0]);
+                  console.log(questionIndex);
            startQuizOne();
          }
-       else{
-         console.log(answerObjectList[0].value);
-            console.log(questionIndex);
+       else if(!answerObjectList[0].value){
+                console.log(questionIndex);
          questionIndex++;
-            console.log(questionIndex);
+                console.log(questionIndex);
          startQuizOne();
        }})
 
-       $("#answerTwo").on("click",function(){
+       $("#answerTwo").off().on("click",function(){
          if(answerObjectList[1].value){
            score++;
            document.getElementById("score").innerHTML = score;
@@ -79,7 +79,7 @@ $(document).ready(function() {
          startQuizOne();
        }})
 
-       $("#answerThree").on("click",function(){
+       $("#answerThree").off().on("click",function(){
          if(answerObjectList[2].value){
            score++;
            document.getElementById("score").innerHTML = score;
@@ -91,7 +91,7 @@ $(document).ready(function() {
          startQuizOne();
        }})
 
-       $("#answerFour").on("click",function(){
+       $("#answerFour").off().on("click",function(){
          if(answerObjectList[3].value){
            score++;
            document.getElementById("score").innerHTML = score;
@@ -118,10 +118,9 @@ $(document).ready(function() {
            questionList.push(data.quizzes[1].questions[i].question)
          }
 
-          if(questionIndex < data.quizzes[1].questions.length + 1)
+          if(questionIndex < questionList.length)
           {
           document.getElementById("questionText").innerHTML = questionList[questionIndex];
-          console.log(questionList[questionIndex]);
           let answerObjectList =[];
           for(j = 0; j < data.quizzes[1].questions[questionIndex].answers.length; j++){
             answerObjectList.push(data.quizzes[1].questions[questionIndex].answers[j])
@@ -136,69 +135,53 @@ $(document).ready(function() {
           document.getElementById("answerThree").innerHTML =answerList[2];
           document.getElementById("answerFour").innerHTML = answerList[3];
 
-          $("#answerOne").on("click",function(){
+          $("#answerOne").off().on("click",function(){
             if(answerObjectList[0].value){
-              console.log(score);
               score++;
               document.getElementById("score").innerHTML = score;
-              console.log(score);
               questionIndex++;
               startQuizTwo();
             }
           else{
-            console.log(score);
             questionIndex++;
           startQuizTwo();
-          console.log(score);
           }})
 
-          $("#answerTwo").on("click",function(){
+          $("#answerTwo").off().on("click",function(){
             if(answerObjectList[1].value){
-              console.log(score);
               score++;
               document.getElementById("score").innerHTML = score;
-              console.log(score);
               questionIndex++;
               startQuizTwo();
             }
           else{
-            console.log(score);
             questionIndex++;
           startQuizTwo();
-          console.log(score);
           }})
 
-          $("#answerThree").on("click",function(){
+          $("#answerThree").off().on("click",function(){
             if(answerObjectList[2].value){
-              console.log(score);
               score++;
               document.getElementById("score").innerHTML = score;
-              console.log(score);
               questionIndex++;
               startQuizTwo();
             }
           else{
-            console.log(score);
             questionIndex++;
           startQuizTwo();
-          console.log(score);
           }})
 
 
-          $("#answerFour").on("click",function(){
+          $("#answerFour").off().on("click",function(){
             if(answerObjectList[3].value){
-              console.log(score);
               score++;
               document.getElementById("score").innerHTML = score;
-              console.log(score);
               questionIndex++;
               startQuizTwo();
             }
           else{
-            console.log(score);
             questionIndex++;
           startQuizTwo();
-          console.log(score);
           }})
 
          }
