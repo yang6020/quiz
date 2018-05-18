@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset = "UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel ="stylesheet" type = "text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Kanit:700|Press+Start+2P|Raleway" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type ="text/javascript" src = "src/quiz.json"> </script>
+  <script src="jscript.js"></script>
+
+</head>
+<body>
+<div>
+  <div class = "container-fluid text-centered">
+
+    <div class = "start-screen">
+        <h1 class = "start-title">
+          <span style="color:#FF0000"
+          >C</span><span style="color:#FF7F00"
+          >o</span><span style="color:#FFFF00"
+          >o</span><span style="color:#00FF00"
+          >l</span>-<span style="color:#0000FF"
+          >Q</span><span style="color:#4B0082"
+          >u</span><span style="color:#9400D3"
+          >i</span><span style="color:#FF0000"
+          >z</span>
+        </h1>
+        <p class = "start-desc"> choose </p>
+      <div section = "container">
+        <button  id = "firstQuiz" class = "start-buttons"> Abstract </button>
+      </div>
+      <div section = "button-center">
+        <button  id = "secondQuiz" class = "start-buttons"> Dev </button>
+      </div>
+    </div>
+  </div>
+
+    <div class ="quiz-screen">
+      <h1 class = "topright" id = "score" > </h1>
+      <h2 class = "question" id = "questionText"> </h2>
+
+      <div class = "container">
+        <div class = "col-xs">
+          <button class = "answer-buttons" id = "answerOne"> </button>
+        </div>
+        &nbsp;
+        <div class = "col-xs">
+          <button class = "answer-buttons" id = "answerTwo"> </button>
+        </div>
+      </div>
+      <div class = "container">
+        <div class = "col-xs">
+            <button class = "answer-buttons" id = "answerThree"></button>
+        </div>
+        &nbsp;
+        <div class = "col-xs">
+            <button class = "answer-buttons" id = "answerFour" onclick = ""> </button>
+        </div>
+      </div>
+    </div>
+
+
+    
+
+    <div class = "end-screen">
+      <div class = "container">
+        <p class ="resultStyle" id = "result"> </p>
+      </div>
+      <div class = "container">
+        <div class = "endChildContainer">
+          <p class = "yourFinalScore" >YOUR FINAL SCORE IS : </p>
+        </div>
+        <div class = "endChildContainer">
+          <p class = "endScore" id = "score2"></p>
+        </div>
+      </div>
+      <div class = "container">
+        <button class = "start-buttons" id = "restartButton">Restart</button>
+      </div>
+    </div>
+</div>
+
+  </div>
+</div>
+</body>
+</html>
