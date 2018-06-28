@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
   var data;
-  $.getJSON('https://raw.githubusercontent.com/redacademy/adp-entrance/master/src/quiz.json?token=Ahegjo4rR8DmvyS447bzcDGK68H_qdswks5bBx-AwA%3D%3D',function (mydata){
+  $.getJSON('https://raw.githubusercontent.com/yang6020/adp-entrance/master/src/quiz.json',function (mydata){
     data = mydata;
   });
 
